@@ -1,15 +1,12 @@
 <?php
 include 'koneksi.php';
 
-// Memeriksa apakah $_POST['submit'] sudah dikirim (tombol diklik)
 if(isset($_POST['submit'])){
-    // $_POST: Method untuk mengambil data dari body HTTP request (tidak terlihat di URL, lebih aman untuk form)
     $judul    = $_POST['judul'];
     $penulis  = $_POST['penulis'];
     $penerbit = $_POST['penerbit'];
     $tahun    = $_POST['tahun'];
 
-    // Menjalankan query INSERT
     $query = "INSERT INTO tb_buku (judul, penulis, penerbit, tahun) VALUES ('$judul', '$penulis', '$penerbit', '$tahun')";
     $hasil = mysqli_query($koneksi, $query);
 

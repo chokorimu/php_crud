@@ -19,7 +19,7 @@ if(isset($_POST['update'])){
         WHERE id_buku='$id'";
     $exec = mysqli_query($koneksi, $query_update);
     
-    if($exec)
+    if($exec) {
         header("Location: index.php");
         exit;
     }

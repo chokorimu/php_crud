@@ -1,4 +1,4 @@
-<?php include 'koneksi.php'; // ini untuk import ?>      
+<?php include 'koneksi.php'; ?>      
 <!DOCTYPE html>
 <html style="font-family: 'Segoe UI', sans-serif; background-color: #f4f7f6;">
     <body style="margin: 0; padding: 0;">
