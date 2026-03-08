@@ -1,36 +1,27 @@
 <?php
 include 'koneksi.php';
 
-// Menangkap ID dari URL.
 $id = $_GET['id'];
-
-// Mengambil data spesifik berdasarkan ID untuk "mengisi" form (pre-fill).
 $query = mysqli_query($koneksi, "SELECT * FROM tb_buku WHERE id_buku = '$id'");
 $data = mysqli_fetch_array($query);
 
-// Logika saat tombol 'update' diklik.
 if(isset($_POST['update'])){
-    // Mengambil SEMUA data dari form agar sinkron dengan database.
     $judul    = $_POST['judul'];
     $penulis  = $_POST['penulis'];
     $penerbit = $_POST['penerbit'];
     $tahun    = $_POST['tahun'];
-
-    // SQL UPDATE: Mengubah data pada kolom tertentu berdasarkan ID (Identifier).
-    // Pastikan semua kolom (penerbit & tahun) masuk dalam query ini agar data tidak hilang.
-    $query_update = "UPDATE tb_buku SET 
-                    judul='$judul', 
-                    penulis='$penulis', 
-                    penerbit='$penerbit', 
-                    tahun='$tahun' 
-                    WHERE id_buku='$id'";
-    
+    $query_update = "
+        UPDATE tb_buku SET 
+        judul='$judul', 
+        penulis='$penulis', 
+        penerbit='$penerbit', 
+        tahun='$tahun' 
+        WHERE id_buku='$id'";
     $exec = mysqli_query($koneksi, $query_update);
     
-    if($exec){ // Jika asisten (mysqli_query) melaporkan tugas selesai
-        // Navigasi otomatis diletakkan di sini
-        header("Location: index.php"); // Memerintah browser pindah ke index.php
-        exit; // Menghentikan script agar tidak memproses baris di bawahnya
+    if($exec)
+        header("Location: index.php");
+        exit;
     }
 }
 ?>
